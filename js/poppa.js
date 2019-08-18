@@ -50,13 +50,15 @@ $(function($) {
 		defaults: {
 
 			// @todo prevent even if valid
-			preventDefault: true,
-			autocomplete: 'on',
+            preventDefault: true,
+            
+            autocomplete: 'on',
+            sendForm: true,
 			liveValidation: true,
 			noValidate: true,
 			disableSubmitInvalid: false, // Live validation must be set to true to make this option work.
             inputs: {},
-            formInvalidAlertWarning: 'Formularz nie został wypełniony poprawnie. Popraw oznaczone pola.',
+            formInvalidAlertWarning: 'The form has not been completed correctly. Correct marked fields.',
 
 			requiredMessage: function(name) {
 				return firstToUpperCase(name + ' is required'); // @todo input name empty
@@ -667,6 +669,7 @@ $(function($) {
                 else {
                     // Form is valid, remove alert.
                     this.alert.remove();
+                    if(this.settings.sendForm === false) event.preventDefault();
                 }
     
                 this.inputs.forEach($.proxy(function(input, key) {

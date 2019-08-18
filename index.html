@@ -15,7 +15,7 @@
 	<body>
 		<nav>
 			<div class="container">
-				<h3 class = "title"><a href="./index.php">Poppa</a> <small class="super-small ml-1">jQuery validation plugin by <a href="https://www.fatbird.com">Fatbird</a></small><span class="float-right">fatbird.com</span></h3>
+				<h3 class = "title"><a href="./">Poppa</a> <small class="super-small ml-1">jQuery validation plugin</small></h3>
 			</div>
 		</nav>
 		<div class = "container">				
@@ -28,7 +28,7 @@
 					<div class="example-block">
 						<h5 class="title mb-2 mt-0">Installation guide</h5>
 						<p>First, download Poppa here:</p>
-						<div class="mb-3"><a href="./poppa.rar" class="btn btn-primary">Download</a><a href="./poppa.rar" class="btn btn-primary ml-2">View on Github</a></div>
+						<div class="mb-3"><a href="https://github.com/eceterak/Poppa" class="btn btn-primary">View on Github</a></div>
 						<p>After extracting the file, include the Javascript at the bottom of your page before the closing <code class="super-clean">&lt;/body&gt;</code> tag. Also, make sure jQuery, which is required by the plugin is also included:</p>
 <pre><code class="html">&lt;!&#45;&#45; Load jQuery first &#45;&#45;&gt;
 &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
@@ -39,11 +39,350 @@
 						<pre><code class="html">&lt;script&gt;
   $('#your-form').validation();
 &lt;/script&gt;</code></pre>
-						<p>Check the examples page to see Poppa in action: <a href="./examples.php">examples</a>. <br />For more information about the plugin, visit <a href="./documentation.php">documentation</a>.</p>
+                    </div>
+                    <div class="example-block">
+						<h4 class="title mb-2 mt-4">Documentation</h4>
 					</div>
+					<div class="example-block" id="required-validation">
+					    <h5 class="title mb-2 mt-0">Required fields</h5>
+					    <p>Can be applied to all types of inputs (including HTML5), textareas and select elements.</p>
+<pre><code class="html">&lt;input type="text" required&gt;
+&lt;input type="checkbox" required&gt;
+&lt;input type="radio" required&gt;
+&lt;input type="file" required&gt;
+&lt;textarea required&gt;&lt;/textarea&gt;
+&lt;select required&gt;
+  &lt;option value=""&gt;---&lt;/option&gt;
+  &lt;option value="black"&gt;Black&lt;/option&gt;
+  &lt;option value="white"&gt;White&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!&#45;&#45; HTML5 example &#45;&#45;&gt;
+&lt;input type="time" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="required-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Name</label>
+								<div class="col-6"><input name="name" type="text" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Radio</label>
+								<div class="col-6"><input name="radio" type="radio" value="black" class="mr-1" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Checkbox</label>
+								<div class="col-6"><input type="checkbox" name="checkbox" required></div>
+							</div>
+							<div class="form-group row align-items-start">
+								<label class="col-2">Textarea</label>
+								<div class="col-6"><textarea name="textarea" class="form-control" required></textarea></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">File</label>
+								<div class="col-6"><input type="file" name="file" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Select</label>
+								<div class="col-6">
+									<select name="select" class="form-control" required>
+										<option value="">&#45;&#45;&#45;</option>
+										<option value="black">Black</option>
+										<option value="white">White</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Time <small>(HTML5)</small></label>
+								<div class="col-6"><input type="time" name="time" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="length-validation">
+						<h5 class="title mb-2 mt-0">Length</h5>
+						<p>Available options: <strong>min</strong> [int], <strong>max</strong> [int]. <br />HTML5 attributes supported: <strong>minlenght</strong>, <strong>maxlenght</strong>.</p>
+<pre><code class="html">&lt;!&#45;&#45; Minimum 3 characters &#45;&#45;&gt;
+&lt;input type="text" data-validation-length="min:3" required&gt;
+
+&lt;!&#45;&#45; Maximum 20 characters &#45;&#45;&gt;
+&lt;input type="text" data-validation-length="max:20" required&gt;
+
+&lt;!&#45;&#45; Between 10 and 150 characters &#45;&#45;&gt;
+&lt;input type="text" data-validation-length="min:10,max:150" required&gt;
+
+&lt;!&#45;&#45; Input is not required but it must be 
+at least 8 characters long if not empty. &#45;&#45;&gt;
+&lt;input type="text" data-validation-length="min:8"&gt;
+
+&lt;!&#45;&#45; HTML5 example. Between 2 and 30 characters &#45;&#45;&gt;
+&lt;input type="number" minlength="2" maxlength="30" required&gt;
+</code></pre>
+<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="length-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Min 3 characters</label>
+								<div class="col-6"><input name="minimum" type="text" data-validation-length="min:3" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Max 20 characters</label>
+								<div class="col-6"><input name="maximum" type="text" data-validation-length="max:20" class="form-control" required></div>
+							</div>
+							<div class="form-group row align-items-start">
+								<label class="col-2">10 - 150 characters</label>
+								<div class="col-6"><textarea name="between" data-validation-length="max:10,max:150" class="form-control" required></textarea></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2"><small>Not required (8 char max)</small></label>
+								<div class="col-6"><input name="not required" type="text" data-validation-length="min:8" class="form-control"></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">2 - 30 <small>(HTML5)</small></label>
+								<div class="col-6"><input name="HTML5" type="text" minlenght="2" maxlength="30" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="range-validation">
+						<h5 class="title mb-2 mt-0">Range</h5>
+						<p>Available options: <strong>min</strong> [int], <strong>max</strong> [int]. <br />HTML5 attributes supported: <strong>min</strong>, <strong>max</strong>.</p>
+<pre><code class="html">&lt;!&#45;&#45; Any numerical value &#45;&#45;&gt;
+&lt;input type="text" data-validation-type="number" required&gt;
+
+&lt;!&#45;&#45; Value minumum 20 &#45;&#45;&gt;
+&lt;input type="text" data-validation-range="min:20" required&gt;
+
+&lt;!&#45;&#45; Value maximum 50 &#45;&#45;&gt;
+&lt;input type="text" data-validation-range="max:50" required&gt;
+
+&lt;!&#45;&#45; Value between -10 and 100 &#45;&#45;&gt;
+&lt;input type="text" data-validation-range="min:-10,max:100" required&gt;
+
+&lt;!&#45;&#45; HTML5 example &#45;&#45;&gt;
+&lt;input type="number" min="10" max="30" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="range-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Number</label>
+								<div class="col-6"><input name="number" type="text" data-validation-type="number" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Min val 20</label>
+								<div class="col-6"><input name="minimum" type="text" data-validation-type="number" data-validation-range="min:20" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">Max val 50</label>
+								<div class="col-6"><input name="maximum" type="text" data-validation-type="number" data-validation-range="max:50" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">-10 - 100</label>
+								<div class="col-6"><input name="between" type="text" data-validation-type="number" data-validation-range="min:-10,max:100" class="form-control" required></div>
+							</div>
+							<div class="form-group row">
+								<label class="col-2">10 - 30 <small>(HTML5)</small></label>
+								<div class="col-6"><input name="html5" type="number" min="10" max="30" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>			
+					</div>
+					<div class="example-block" id="email-validation">
+						<h5 class="title mb-2 mt-0">E-mail</h5>
+<pre><code class="html">&lt;input type="text" data-validation-type="email" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="email-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">E-mail</label>
+								<div class="col-6"><input name="email" type="text" data-validation-type="email" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="url-validation">
+						<h5 class="title mb-2 mt-0">Url</h5>
+						<p>Valid url formats: <i>https://www.example.com, https://example.com, www.example.com, example.com</i></p>
+<pre><code class="html">&lt;input type="text" data-validation-type="url" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="url-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Url</label>
+								<div class="col-6"><input name="url" type="text" data-validation-type="url" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block">
+						<h5 class="title mb-2 mt-0" id="alphanumeric-validation">Alphanumeric</h5>
+						<p>Accepts only letters and numbers.</p>
+<pre><code class="html">&lt;input type="text" data-validation-type="alphanumeric" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="alphanumeric-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Alphanumeric</label>
+								<div class="col-6"><input name="Alphanumeric" type="text" data-validation-type="alphanumeric" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="letters-validation">
+						<h5 class="title mb-2 mt-0">Letters</h5>
+						<p>Accepts only lowercase and uppercase letters.</p>
+<pre><code class="html">&lt;input type="text" data-validation-type="letters" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="letters-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Letters</label>
+								<div class="col-6"><input name="letters" type="text" data-validation-type="letters" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="regexp-validation">
+						<h5 class="title mb-2 mt-0">Regexp</h5>
+						<p>HTML5 attributes supported: <strong>pattern</strong></p>
+<pre><code class="html">&lt;!&#45;&#45; Only uppercase letters &#45;&#45;&gt;
+&lt;input type="text" data-validation-regexp="^[A-Z]+$" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="regexp-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Regexp</label>
+								<div class="col-6"><input name="regexp" type="text" data-validation-type="regexp" data-validation-regexp="^[A-Z]+$" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+					<div class="example-block" id="hint-validation">
+						<h5 class="title mb-2 mt-0">Display hint</h5>
+<pre><code class="html">&lt;input type="text" data-validation-hint="Some usefull hint" required&gt;
+</code></pre>
+						<p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+						<form class="hint-validation toggle-content">
+							<div class="form-group row">
+								<label class="col-2">Hint</label>
+								<div class="col-6"><input name="hint" type="text" data-validation-hint="Some usefull hint" class="form-control" required></div>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+                    <div class="example-block" id="error-validation">						
+                        <h5 class="title mb-2 mt-0">Custom required message</h5>
+<pre><code class="html">&lt;input type="text" data-validation-rqmessage="Hey, I will need that!" required&gt;
+</code></pre>
+                        <p class="p-display-form"><button class="btn btn-link toggle-button">Show example</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+                        <form class="error-validation toggle-content">
+                            <div class="form-group row">
+                                <label class="col-2">Error</label>
+                                <div class="col-6"><input name="hint" type="text" data-validation-rqmessage="Hey, I will need that!" data-validation-length="min:300" class="form-control" required></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="example-block">
+                        <h5 class="title mb-2 mt-2">Live validation</h5>
+                        <p>By default each input will become validated immediately when you start typing into the input or the input looses focus. If you don't want this feature you can set <code class="super-clean">'liveValidation': false</code> upon plugin initiation to disable it. An example below shows the same user registration form, but with live validation active.</p>
+                        <form class="live-validation mb-3" id="live-validation">
+                            <div class="form-group">
+                                <label>Login&#42;</label>
+                                <input name="login" type="text" data-validation-length="min:3" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email&#42;</label>
+                                <input name="email" type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Password&#42;</label>
+                                <input name="password" type="password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Website</label>
+                                <input name="website" data-validation-type="url" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea name="bio" data-validation-length="min:10,max:150" data-validation-hint="Describe yourself" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-0">I agree to the terms of service &#42;</label>
+                                <input type="checkbox" data-validation-message="You have to agree to terms of service" required>
+                            </div>
+                            <div class="mb-2"><small>&#42;required fields</small></div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <p class="p-display-form"><button class="btn btn-link toggle-button">Display code</button><span class="float-right"><i class="expand-arrow fas fa-chevron-down"></i></span></p>
+                        <div class="toggle-content">
+                            <span>HTML</span>
+<pre><code>&lt;form class="user-registration&gt;
+    &lt;label&gt;Login &#42;&lt;/label&gt;
+    &lt;input name="login" type="text" data-validation-type="alphanumeric" data-validation-length="min:3,max:35" required&gt;
+    &lt;label&gt;Email &#42;&lt;/label&gt;
+    &lt;input name="email" type="text" data-validation-type="email" required&gt;
+    &lt;label&gt;Password &#42;&lt;/label&gt;
+    &lt;input name="password" data-validation-type="password" required&gt;
+    &lt;label&gt;Website&lt;/label&gt;
+    &lt;input name="website" data-validation-type="url"&gt;
+    &lt;label&gt;Bio&lt;/label&gt;
+    &lt;textarea name="bio" data-validation-length="min:10,max:150" data-validation-hint="Describe yourself"&gt;&lt;/textarea&gt;
+    &lt;label&gt;I agree to the terms of service &#42;&lt;/label&gt;
+    &lt;input type="checkbox" data-validation-message="You have to agree to terms of service" required&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<span>Javascript</span>
+<pre><code class="html">&lt;script&gt;
+    $('#user-registration').validation({
+    'autocomplete': 'off'
+    });
+&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                    <div class="example-block" id="options">
+                        <h5 class="title mb-2 mt-0">Options</h5>
+                        <p>Those options change the behaviour of the plugin. Unlike to input attributes, they refer to the entire form.</p>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>preventDefault</td><td>true</td><td>Prevents form from submitting. If set to false, form will be submitted even if there are invalid inputs.</td></tr>
+                                <tr><td>sendForm</td><td>true</td><td>Prevents form from submitting even if provided data is valid.</td></tr>
+                                <tr><td>autocomplete</td><td>on</td><td>Turns autocomplete on/off for the entire form.</td></tr>
+                                <tr><td>liveValidation</td><td>true</td><td>For more details about live validation, click <a href="#live-validation">here</a>.</td></tr>
+                                <tr><td>noValidate</td><td>true</td><td>Disables default HTML5 form validation.</td></tr>
+                                <tr><td>formInvalidAlertWarning</td><td>The form has not been completed correctly. Correct marked fields.</td><td>A message to display when form is invalid.</td></tr>
+                                <tr><td>requiredMessage</td><td>function()</td><td><p class="mb-1">Custom error message for required inputs. Using <i>this</i> keyword inside function will refer to the current input.</p>
+<pre><code class="javascript clean">requiredMessage: function() {
+    this.name + ' is required';
+}
+</code></pre>
+                                </td></tr>
+                            </tbody>
+                        </table>
+                    </div>
 				</div>
 				<aside class="col-3">
-					<?php require_once('./menu.php'); ?>
+                    <ul class="nav flex-column">
+                        <li class="list-group-item"><a href="#required-validation">Required fields</a></li>
+                        <li class="list-group-item"><a href="#length-validation">Length</a></li>
+                        <li class="list-group-item"><a href="#range-validation">Range</a></li>
+                        <li class="list-group-item"><a href="#email-validation">E-mail</a></li>
+                        <li class="list-group-item"><a href="#url-validation">Url</a></li>
+                        <li class="list-group-item"><a href="#alphanumeric-validation">Alphanumeric</a></li>
+                        <li class="list-group-item"><a href="#letters-validation">Letters</a></li>
+                        <li class="list-group-item"><a href="#regexp-validation">Regexp</a></li>
+                        <li class="list-group-item"><a href="#hint-validation">Display hint</a></li>
+                        <li class="list-group-item"><a href="#error-validation">Custom error message</a></li>
+                        <li class="list-group-item"><a href="#live-validation">Live validation</a></li>
+                        <li class="list-group-item"><a href="#options">Options</a></li>		
+                    </ul>
 				</aside>
 			</div>
 		</div>
@@ -64,9 +403,44 @@
 				 * Initiate validation on each form.
 				 */
 
-				$('#get-validated').validation({
+                var options = {
+                    'autocomplete': 'off',
+                    'liveValidation': false,
+                    'sendForm': false
+                }
+
+				$('#get-validated').validation(options);
+            
+				$('.required-validation').validation(options);
+
+				$('.length-validation').validation(options);
+
+				$('.range-validation').validation(options);
+
+				$('.email-validation').validation(options);
+
+				$('.url-validation').validation(options);
+
+				$('.alphanumeric-validation').validation(options);
+
+				$('.letters-validation').validation(options);
+
+				$('.regexp-validation').validation(options);
+
+				$('.hint-validation').validation({
 					'autocomplete': 'off',
-					'liveValidation': false
+					'liveValidation': false,
+
+					requiredMessage: function() {
+						return 'blahhhh';
+					}
+				});
+
+				$('.error-validation').validation(options);
+
+				$('.live-validation').validation({
+					'autocomplete': 'off',
+					'liveValidation': true
 				});
 
 			});
